@@ -1,0 +1,34 @@
+<h1>Listing Stations</h1>
+
+<%= link_to 'New Station', new_station_path %> 
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Company</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip Code</th>
+    <th>Country</th>
+    <th>Web Site</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+ 
+  <% @stations.each do |station| %>
+    <tr>
+      <td><%= station.id %></td>
+      <td><%= station.name %></td>
+      <td><%= station.company %></td>
+      <td><%= station.address %></td>
+      <td><%= station.city %></td>
+      <td><%= station.state %></td>
+      <td><%= station.zip %></td>
+      <td><%= station.country %></td>
+      <td><%= station.url %></td>
+      <td><%= station.lat %></td>
+      <td><%= station.lon %></td>
+    </tr>
+  <% end %>
+</table>
