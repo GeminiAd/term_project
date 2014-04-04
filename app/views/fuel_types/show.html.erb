@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @fuel_type.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @fuel_type.description %>
+</p>
+
+<p>
+  <strong>More Information Can Be Found At:</strong>
+  <%= @fuel_type.url %>
+</p>
+
+<%= link_to 'Back', fuel_types_path %>
+<%= link_to 'Edit', edit_fuel_type_path(@fuel_type) %>
