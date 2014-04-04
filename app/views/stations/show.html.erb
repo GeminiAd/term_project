@@ -39,6 +39,16 @@
 </p>
 
 <p>
+  <strong>Phone:</strong>
+  <%= @station.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @station.email %>
+</p>
+
+<p>
   <strong>Latitude:</strong>
   <%= @station.lat %>
 </p>
@@ -47,3 +57,6 @@
   <strong>Longitude:</strong>
   <%= @station.lon %>
 </p>
+
+<%= link_to 'Back', stations_path %>
+<%= link_to 'Edit', edit_station_path(@station) %>

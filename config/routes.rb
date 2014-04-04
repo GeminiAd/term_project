@@ -8,7 +8,7 @@ TermProject::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  #get '/stations/:id(.:format)' => 'stations#show'
+  post '/stations/:id/edit(.:format)' => 'stations#update'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

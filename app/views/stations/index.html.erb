@@ -1,4 +1,4 @@
-<h1>Listing Stations</h1>
+<h1>Listing Gas Stations</h1>
 
 <%= link_to 'New Station', new_station_path %> 
 <table border="1">
@@ -12,8 +12,13 @@
     <th>Zip Code</th>
     <th>Country</th>
     <th>Web Site</th>
+    <th>Phone</th>
+    <th>Email</th>
     <th>Latitude</th>
     <th>Longitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
  
   <% @stations.each do |station| %>
@@ -27,8 +32,14 @@
       <td><%= station.zip %></td>
       <td><%= station.country %></td>
       <td><%= station.url %></td>
+      <td><%= station.phone %></td>
+      <td><%= station.email %></td>
       <td><%= station.lat %></td>
       <td><%= station.lon %></td>
+      <td><%= link_to 'Show', station %></td>
+      <td><%= link_to 'Edit', edit_station_path(station) %></td>
+      <td><%= link_to 'Destroy', station_path(station),
+                       method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
