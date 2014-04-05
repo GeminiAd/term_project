@@ -1,0 +1,28 @@
+<h1>Listing Zip Codes</h1>
+
+<%= link_to 'New Zip Code', new_zip_code_path %> 
+<table border="1">
+  <tr>
+    <th>Zip Code</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <% @zip_codes.each do |zip_code| %>
+    <tr>
+      <td><%= zip_code.zip_code %></td>
+      <td><%= zip_code.lat %></td>
+      <td><%= zip_code.lon %></td>
+      <td><%= link_to 'Show', zip_code %></td>
+      <td><%= link_to 'Edit', edit_zip_code_path(zip_code) %></td>
+      <td><%= link_to 'Destroy', zip_code_path(zip_code),
+                      method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+
+<%= link_to 'Back', controller: "welcome" %>

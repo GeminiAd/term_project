@@ -1,0 +1,35 @@
+<h1>Editing Zip Code</h1>
+ 
+<%= form_for :zip_code, url: zip_code_path(@zip_code), method: :patch do |f| %>
+  <% if @zip_code.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@zip_code.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @zip_code.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code %>
+  </p>
+ 
+  <p>
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </p>
+ 
+  <p>
+    <%= f.label :lon %><br>
+    <%= f.text_field :lon %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Back', zip_codes_path %>
