@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404101718) do
+ActiveRecord::Schema.define(version: 20140405112053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.string   "state"
+    t.string   "country"
+    t.float    "lat"
+    t.float    "lon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "fuel_types", force: true do |t|
     t.string   "name"
@@ -24,10 +34,18 @@ ActiveRecord::Schema.define(version: 20140404101718) do
     t.datetime "updated_at"
   end
 
+  create_table "prices", force: true do |t|
+    t.integer  "station_fuel_type_id"
+    t.integer  "fuel_type_id"
+    t.float    "price"
+    t.datetime "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "station_fuel_types", force: true do |t|
     t.integer  "station_id"
     t.integer  "fuel_type_id"
-    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +65,14 @@ ActiveRecord::Schema.define(version: 20140404101718) do
     t.string   "city"
     t.string   "phone"
     t.string   "email"
+  end
+
+  create_table "zip_codes", force: true do |t|
+    t.integer  "zip_code"
+    t.float    "lat"
+    t.float    "lon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

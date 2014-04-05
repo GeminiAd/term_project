@@ -1,0 +1,30 @@
+<h1>Listing Prices</h1>
+
+<%= link_to 'New Price', new_price_path %> 
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Station Fuel Type Id</th>
+    <th>Price</th>
+    <th>Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <% @prices.each do |price| %>
+    <tr>
+      <td><%= price.id %></td>
+      <td><%= price.station_fuel_type_id %></td>
+      <td><%= price.price %></td>
+      <td><%= price.time %></td>
+      <td><%= link_to 'Show', price %></td>
+      <td><%= link_to 'Edit', edit_price_path(price) %></td>
+      <td><%= link_to 'Destroy', price_path(price),
+                      method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br />
+
+<%= link_to 'Back', controller: "welcome" %>

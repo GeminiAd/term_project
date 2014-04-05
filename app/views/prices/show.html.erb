@@ -1,0 +1,17 @@
+<p>
+  <strong>Station Fuel Type Id:</strong>
+  <%= @price.station_fuel_type_id %>
+</p>
+ 
+<p>
+  <strong>Price:</strong>
+  <%= @price.price %>
+</p>
+ 
+<p>
+  <strong>Time:</strong>
+  <%= @price.time %>
+</p>
+
+<%= link_to 'Back', prices_path %>
+<%= link_to 'Edit', edit_price_path(@price) %>

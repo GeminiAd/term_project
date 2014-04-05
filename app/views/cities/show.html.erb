@@ -1,0 +1,27 @@
+<p>
+  <strong>City Name:</strong>
+  <%= @city.name %>
+</p>
+ 
+<p>
+  <strong>State:</strong>
+  <%= @city.state %>
+</p>
+ 
+<p>
+  <strong>Country:</strong>
+  <%= @city.country %>
+</p>
+ 
+<p>
+  <strong>Latitude:</strong>
+  <%= @city.lat %>
+</p>
+ 
+<p>
+  <strong>Longitude:</strong>
+  <%= @city.lon %>
+</p>
+
+<%= link_to 'Back', cities_path %>
+<%= link_to 'Edit', edit_city_path(@city) %>
