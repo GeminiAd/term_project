@@ -1,0 +1,12 @@
+<p>
+  <strong>Gas Station Id:</strong>
+  <%= @station_fuel_type.station_id %>
+</p>
+ 
+<p>
+  <strong>Fuel Type Id:</strong>
+  <%= @station_fuel_type.fuel_type_id %>
+</p>
+
+<%= link_to 'Back', station_fuel_types_path %>
+<%= link_to 'Edit', edit_station_fuel_type_path(@station_fuel_type) %>

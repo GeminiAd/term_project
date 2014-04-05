@@ -1,0 +1,30 @@
+<h1>Editing Station Fuel Type</h1>
+ 
+<%= form_for :station_fuel_type, url: station_fuel_type_path(@station_fuel_type), method: :patch do |f| %>
+  <% if @station_fuel_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@station_fuel_type.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @station_fuel_type.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :station_id %><br>
+    <%= f.text_field :station_id %>
+  </p>
+ 
+  <p>
+    <%= f.label :fuel_type_id %><br>
+    <%= f.text_field :fuel_type_id %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Back', station_fuel_types_path %>
