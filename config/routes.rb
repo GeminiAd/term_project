@@ -4,11 +4,11 @@ TermProject::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'stations#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-  post '/stations/:id/edit(.:format)' => 'stations#update'
+  # post '/stations/:id/edit(.:format)' => 'stations#update'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
