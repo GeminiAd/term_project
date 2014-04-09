@@ -1,8 +1,12 @@
 class StationsController < ApplicationController
   def create
     @station = Station.new(station_params)
-    @station.save
-    redirect_to @station
+    
+    if @station.save
+      redirect_to @station
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -21,6 +25,7 @@ class StationsController < ApplicationController
   end
 
   def new
+    @station = Station.new
   end
 
   def show
