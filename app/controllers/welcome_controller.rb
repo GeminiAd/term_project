@@ -5,6 +5,7 @@ class WelcomeController < ApplicationController
       marker.lat station.lat
       marker.lng station.lon
       marker.title station.name
+      marker.infowindow station.name
     end
   end
 end
