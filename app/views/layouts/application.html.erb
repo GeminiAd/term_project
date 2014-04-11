@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TermProject</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<title>Geographic Gas Prices</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	<div id="main_container" class="container">
+		<div id="header">
+			<div class="container">
+				<h1 id="logo"><a href="/">Geographic Gas Prices</a></h1>
+			</div>
+		</div>
+		<div id="content_container" class="row">
+			<div id="content" class="col-md-5">
+				<div id="menu">
+					<ul>
+						<a href="#"><li>Home</li></a>
+						<a href="#"><li>About</li></a>
+					</ul>
+					<div id="search_form">
+						<h4>Search for Local Gas Prices</h4>
+						<%= form_tag("/", method: "get") do %>
+						<%= label_tag(:search, "") %>
+						<%= text_field_tag 'search', nil, placeholder: 'City or Zip' %>
+						<%= submit_tag("Search") %>
+						<% end %>
+					</div>
+				</div>
 
-<%= yield %>
-
+				<%= yield :content %>
+				<%= yield %>
+			</div>
+			<div id="map_container" class="col-md-7">
+				<div id="map">
+					<%= yield :map %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%= yield :crud %>
 </body>
 </html>
