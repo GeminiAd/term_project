@@ -1,6 +1,6 @@
-class Station < ActiveRecord::Base
-  has_many :prices
+lass Station < ActiveRecord::Base
   has_many :station_fuel_types
+  has_many :prices, through: :station_fuel_types
   has_many :fuel_types, through: :station_fuel_types
 
   validates :name, presence: true, length: { minimum: 3 }
