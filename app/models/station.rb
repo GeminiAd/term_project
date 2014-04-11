@@ -1,4 +1,4 @@
-lass Station < ActiveRecord::Base
+class Station < ActiveRecord::Base
   has_many :station_fuel_types
   has_many :prices, through: :station_fuel_types
   has_many :fuel_types, through: :station_fuel_types
