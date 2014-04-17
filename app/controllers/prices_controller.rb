@@ -2,8 +2,11 @@ class PricesController < ApplicationController
   def create
     @price = Price.new(price_params)
 
-    @price.save
-    redirect_to @price
+    if @price.save
+      redirect_to @price
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -22,6 +25,7 @@ class PricesController < ApplicationController
   end
 
   def new
+    @price = Price.new
   end
 
   def show

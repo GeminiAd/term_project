@@ -1,8 +1,12 @@
 class FuelTypesController < ApplicationController
   def create
     @fuel_type = FuelType.new(fuel_type_params)
-    @fuel_type.save
-    redirect_to @fuel_type
+    
+    if @fuel_type.save
+      redirect_to @fuel_type
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -21,6 +25,7 @@ class FuelTypesController < ApplicationController
   end
 
   def new
+    @fuel_type = FuelType.new
   end
 
   def show

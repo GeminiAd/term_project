@@ -1,12 +1,18 @@
 class StationFuelTypesController < ApplicationController
   def new
+    @station_fuel_type = StationFuelType.new
   end
 
   def create
     @station_fuel_type = StationFuelType.new(station_fuel_type_params)
-    @station_fuel_type.save
+    
+    puts 'Creating Station Fuel Type'
 
-    redirect_to @station_fuel_type
+    if @station_fuel_type.save
+      redirect_to @station_fuel_type
+    else
+      render 'new'
+    end
   end
 
   def destroy

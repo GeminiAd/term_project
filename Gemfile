@@ -51,3 +51,6 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 gem 'rails_12factor'
+
+gem 'rspec'
+gem 'rspec-rails'
