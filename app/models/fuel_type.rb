@@ -1,5 +1,5 @@
 class FuelType < ActiveRecord::Base
-  has_one :station_fuel_type
+  has_many :station_fuel_types, dependent: :destroy
 
   validates :name, presence: true
 end
