@@ -27,3 +27,9 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
 fuel_types = FuelType.create([ { name: "87 Octane", description: "Test" },
                                { name: "89 Octane", description: "Test" },
                                { name: "91 Octane", description: "Test" } ])
+
+stations.each { |station|
+  fuel_types.each { |fuel_type|
+    station_fuel_types = StationFuelType.create([{ station_id: station.id, fuel_type_id: fuel_type.id  }])
+  }
+}
