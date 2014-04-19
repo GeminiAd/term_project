@@ -23,3 +23,7 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              url: "http://www.76.com", phone: "(415) 753-5897" },
                            { name: "Shell", company: "Shell", address: "2399 19th Avenue", city: "San Francisco",
                              state: "California", zip: 94116, country: "United States" }])
+
+fuel_types = FuelType.create([ { name: "87 Octane", description: "Test" },
+                               { name: "89 Octane", description: "Test" },
+                               { name: "91 Octane", description: "Test" } ])
