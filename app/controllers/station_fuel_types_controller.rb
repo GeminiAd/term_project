@@ -6,6 +6,7 @@ class StationFuelTypesController < ApplicationController
   def create
     @station_fuel_type = StationFuelType.new(station_fuel_type_params)
     @fuel_type = FuelType.find(station_fuel_type_params[:fuel_type_id])
+    @station = Station.find(station_fuel_type_params[:station_id])
 
     if @station_fuel_type.save
       redirect_to @station_fuel_type
