@@ -28,6 +28,17 @@ class StationsController < ApplicationController
     @station = Station.new
   end
 
+  def search
+    @stations = Station.near(params[:search])
+    @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
+      marker.lat station.lat
+      marker.lng station.lon
+      marker.title station.name
+      marker.infowindow station.name
+      marker.json({ :name => station.name, :address => station.street_address})
+    end
+  end
+
   def show
     @station = Station.find(params[:id])
   end
@@ -43,6 +54,10 @@ class StationsController < ApplicationController
   end
 
   private
+    def is_number?(search_string)
+      return search_string.to_i.to_s == search_string
+    end
+
     def station_params
       params.require(:station).permit(:name, :company, :address, :city, :zip, :state, :country, :url, :phone, :email, :lat, :lon)
     end
