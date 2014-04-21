@@ -22,26 +22,35 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              city: "San Francisco", state: "California", zip: 94116, country: "United States",
                              url: "http://www.76.com", phone: "(415) 753-5897" },
                            { name: "Shell", company: "Shell", address: "2399 19th Avenue", city: "San Francisco",
-                             state: "California", zip: 94116, country: "United States" }])
+                             state: "California", zip: 94116, country: "United States" }
+                           #{ name: "Chevron San Francisco", company: "Chevron", address: "1298 Howard Street",
+                           #  city: "San Francisco", state: "California", zip: 94103, country: "United States",
+                           #  url: "http://www.chevronwithtechron.com/", phone: "(415) 575-0290" }
+                          ])
 
 fuel_types = FuelType.create([ { name: "87 Octane", description: "Test" },
                                { name: "89 Octane", description: "Test" },
-                               { name: "91 Octane", description: "Test" } ])
+                               { name: "91 Octane", description: "Test" },
+                               { name: "Diesel", description: "Test"    } 
+                             ])
 
 # Note: rows correspond to stations, columns correspond to fuel_types
-prices = [ [ 4.31, 4.45, 4.55 ],
-           [ 4.29, 4.39, 4.49 ],
-           [ 4.30, 4.40, 4.52 ],
-           [ 4.29, 4.39, 4.27 ],
-           [ 4.25, 4.35, 4.43 ],
-           [ 4.29, 4.37, 4.45 ] ]
+prices = [ [ 4.31, 4.45, 4.55, 0 ],
+           [ 4.29, 4.39, 4.49, 0 ],
+           [ 4.30, 4.40, 4.52, 0 ],
+           [ 4.29, 4.39, 4.27, 0 ],
+           [ 4.25, 4.35, 4.43, 0 ],
+           [ 4.29, 4.37, 4.45, 4.19 ] ]
 
 station_fuel_types = Array.new
 stations.each_index { |i|
   fuel_types.each_index { |j|
-    station_fuel_type = StationFuelType.create([{ station_id: stations[i].id, fuel_type_id: fuel_types[j].id  }])
-    station_fuel_types.push(station_fuel_type)
+    
+    if prices[i][j] != 0
+      station_fuel_type = StationFuelType.create([{ station_id: stations[i].id, fuel_type_id: fuel_types[j].id  }])
+      station_fuel_types.push(station_fuel_type)
 
-    Price.create(station_fuel_type_id: station_fuel_type.first.id, price: prices[i][j], time: Time.now.utc.to_s)
+      Price.create(station_fuel_type_id: station_fuel_type.first.id, price: prices[i][j], time: Time.now.utc.to_s)
+    end
   }
 }
