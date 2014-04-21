@@ -22,7 +22,32 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              city: "San Francisco", state: "California", zip: 94116, country: "United States",
                              url: "http://www.76.com", phone: "(415) 753-5897" },
                            { name: "Shell", company: "Shell", address: "2399 19th Avenue", city: "San Francisco",
-                             state: "California", zip: 94116, country: "United States" }
+                             state: "California", zip: 94116, country: "United States" },
+                           { name: "Flyers", company: "Flyers", address: "2301 19th Avenue", city: "San Francisco",
+                             state: "California", zip: 94116, country: "United States", phone: "(415) 731-9540" },
+                           { name: "Flyers", company: "Flyers", address: "2000 19th Avenue", city: "San Francisco",
+                             state: "California", zip: 94116, country: "United States", phone: "(415) 564-1078" },
+                           { name: "Precise Chevron", company: "Chevron", address: "1890 19th Avenue",
+                             city: "San Francisco", state: "California", zip: 94122, country: "United States",
+                             url: "http://www.chevron.com", phone: "(415) 731-2733" },
+                           { name: "19th Ave 76 West", company: "76", address: "1401 19th Avenue", city: "San Francisco",
+                             state: "California", zip: 94122, country: "United States", url: "http://19thave76.com/",
+                             phone: "(415) 681-4336" },
+                           { name: "19th Ave 76 East", company: "76", address: "1400 19th Avenue", city: "San Francisco",
+                             state: "California", zip: 94122, country: "United States", url: "http://19thave76.com/",
+                             phone: "(415) 681-3860" },
+                           { name: "Chevron", company: "Chevron", address: "1288 19th Avenue", city: "San Francisco",
+                             state: "California", zip: 94122, country: "United States", 
+                             url: "http://www.chevronwithtechron.com/", phone: "(415) 731-1044" },
+                           { name: "Richmond's Shell", company: "Shell", address: "4501 Geary Blvd", city: "San Francisco",
+                             state: "California", zip: 94118, country: "United States", url: "http://www.shell.com",
+                             phone: "(415) 221-0424" },
+                           { name: "Fell & Masonic Chevron Station San Francisco", company: "Chevron", 
+                             address: "1698 Fell Street", city: "San Francisco", state: "California", zip: 94117,
+                             country: "United States", url: "http://www.chevronwithtechron.com/", phone: "(415) 921-8188" },
+                           { name: "Chevron San Francisco", company: "Chevron", address: "1100 Junipero Serra Blvd",
+                             city: "San Francisco", state: "California", zip: 94132, country: "United States",
+                             url: "http://www.chevronwithtechron.com/", phone: "(415) 584-4565" }
                            #{ name: "Chevron San Francisco", company: "Chevron", address: "1298 Howard Street",
                            #  city: "San Francisco", state: "California", zip: 94103, country: "United States",
                            #  url: "http://www.chevronwithtechron.com/", phone: "(415) 575-0290" }
@@ -35,12 +60,23 @@ fuel_types = FuelType.create([ { name: "87 Octane", description: "Test" },
                              ])
 
 # Note: rows correspond to stations, columns correspond to fuel_types
-prices = [ [ 4.31, 4.45, 4.55, 0 ],
-           [ 4.29, 4.39, 4.49, 0 ],
-           [ 4.30, 4.40, 4.52, 0 ],
-           [ 4.29, 4.39, 4.27, 0 ],
-           [ 4.25, 4.35, 4.43, 0 ],
-           [ 4.29, 4.37, 4.45, 4.19 ] ]
+#       0 means the station doesn't carry that fuel type
+prices = [ [ 4.31, 4.45, 4.55, 0    ],
+           [ 4.29, 4.39, 4.49, 0    ],
+           [ 4.20, 4.40, 4.52, 0    ],
+           [ 4.09, 4.19, 4.29, 0    ],
+           [ 4.29, 4.37, 4.45, 0    ],
+           [ 4.25, 4.33, 4.41, 4.19 ],
+           [ 4.15, 4.27, 4.27, 4.26 ],
+           [ 4.15, 4.27, 4.27, 4.26 ],
+           [ 4.29, 4.37, 4.45, 4.19 ],
+           [ 4.21, 4.37, 4.41, 4.25 ],
+           [ 4.21, 4.37, 4.41, 4.25 ],
+           [ 4.25, 4.33, 4.41, 0    ],
+           [ 4.27, 4.37, 4.47, 0    ],
+           [ 4.39, 4.49, 4.59, 4.39 ],
+           [ 4.29, 4.37, 4.45, 0    ] 
+         ]
 
 station_fuel_types = Array.new
 stations.each_index { |i|
