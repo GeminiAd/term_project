@@ -33,7 +33,7 @@ class StationsController < ApplicationController
     ftid = params[:fuel_type_id]
 
     #@stations = Station.limit(10).includes(station_fuel_types: :price).where('station_fuel_types.fuel_type_id' => 1)
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => 1).limit(10)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).limit(10)
 
     @stations.each { |station|
       station.station_fuel_types.each { |sft|
@@ -42,13 +42,13 @@ class StationsController < ApplicationController
     }
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
-      # price = station.station_fuel_types.first.price.price
+      price = station.station_fuel_types.first.price.price.to_s
       #logger.debug(price)
 
       marker.lat station.lat
       marker.lng station.lon
       marker.title station.name
-      marker.infowindow station.name
+      marker.infowindow price
       marker.json({ :name => station.name, :address => station.street_address})
     end
   end
