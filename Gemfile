@@ -54,3 +54,6 @@ gem 'rails_12factor'
 
 gem 'rspec'
 gem 'rspec-rails'
+
+gem 'httparty'
+gem 'json'
