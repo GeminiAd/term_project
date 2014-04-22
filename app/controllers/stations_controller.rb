@@ -42,7 +42,7 @@ class StationsController < ApplicationController
     }
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
-      price = station.station_fuel_types.first.price.price.to_s
+      price = '%.2f' % station.station_fuel_types.first.price.price
       #logger.debug(price)
 
       marker.lat station.lat
