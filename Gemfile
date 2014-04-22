@@ -50,7 +50,9 @@ gem 'geocoder'
 
 gem 'gmaps4rails'
 
-gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor'
+end
 
 gem 'rspec'
 gem 'rspec-rails'
