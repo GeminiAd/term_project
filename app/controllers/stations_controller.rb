@@ -41,13 +41,13 @@ class StationsController < ApplicationController
     }
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
-      price = station.station_fuel_types.first.price.price
+      # price = station.station_fuel_types.first.price.price
       #logger.debug(price)
 
       marker.lat station.lat
       marker.lng station.lon
       marker.title station.name
-      marker.infowindow price.to_s
+      marker.infowindow station.name
       marker.json({ :name => station.name, :address => station.street_address})
     end
   end
