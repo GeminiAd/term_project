@@ -32,7 +32,8 @@ class StationsController < ApplicationController
     params[:fuel_type_id] = 1
     ftid = params[:fuel_type_id]
 
-    @stations = Station.includes(station_fuel_types: :price).where('station_fuel_types.fuel_type_id' => 1).limit(10)
+    #@stations = Station.includes(station_fuel_types: :price).where('station_fuel_types.fuel_type_id' => 1).limit(10)
+    @stations = Station.take(10)
 
     @stations.each { |station|
       station.station_fuel_types.each { |sft|
