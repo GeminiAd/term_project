@@ -14,16 +14,6 @@
 		<div id="header">
 			<div class="container">
 				<h1 id="logo"><a href="/">Geographic Gas Prices</a></h1>
-				<div class="navbar-right">
-					<% if user_signed_in? %>
-						Hello <strong><%= link_to current_user.email, edit_user_registration_path, :class => "navbar-link" %>
-						</strong> |
-						<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "navbar-link" %>
-					<% else %>
-						<%= link_to "Login", new_user_session_path, :class => "navbar-link" %> |
-						<%= link_to "Sign up", new_user_registration_path, :class => "navbar-link" %>
-					<% end %>
-				</div>
 			</div>
 		</div>
 		<div id="content_container" class="row">
@@ -34,6 +24,15 @@
 						<a href="/"><button type="button" class="btn btn-default">Home</button></a>
 						<a href="#"><button type="button" class="btn btn-default">About</button></a>
 						<a href="#"><button type="button" class="btn btn-default">Test</button></a>
+					<% if user_signed_in? %>
+						Hello <strong>
+						<%= link_to current_user.email, edit_user_registration_path, :class => "navbar-link" %>
+						</strong>
+						<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-default" %>
+					<% else %>
+						<%= link_to "Login", new_user_session_path, :class => "btn btn-default" %>
+						<%= link_to "Sign up", new_user_registration_path, :class => "btn btn-default" %>
+					<% end %>						
 					</div>
 				</div>
 				<div class="panel panel-default">
