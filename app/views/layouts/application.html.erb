@@ -18,22 +18,35 @@
 		</div>
 		<div id="content_container" class="row">
 			<div id="content" class="col-md-5">
-				<div id="menu">
-					<ul>
-						<a href="#"><li>Home</li></a>
-						<a href="#"><li>About</li></a>
-					</ul>
-					<div id="search_form">
-						<h4>Search for Local Gas Prices</h4>
-						<%= form_tag({controller: "stations", action: "search"}, method: "get") do %>
-						  <%= label_tag(:search, "") %>
-						  <%= text_field_tag :search, nil, placeholder: 'City or Zip' %>
-						  <%= submit_tag("Search") %>
-						<% end %>
+				<div class="panel panel-info">
+					<div class="panel-heading">Menu</div>
+					<div class="panel-body">
+						<button type="button" class="btn btn-default navbar-btn">Home</button>
+						<button type="button" class="btn btn-default navbar-btn">About</button>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">Search</div>
+					<div class="panel-body">
+						<div id="search_form">
+							<h4>Search for Local Gas Prices</h4>
+							<%= form_tag({controller: "/stations", action: "search"}, method: "get") do %>
+							<%= label_tag(:search, "") %>
+							<%= text_field_tag :search, nil, placeholder: 'City or Zip' %>
+							<%= submit_tag("Search") %>
+							<% end %>
+
+							<%= yield :content %>
+						</div>
 					</div>
 				</div>
 
-				<%= yield :content %>
+				<% if notice %>
+  				<p class="alert alert-success"><%= notice %></p>
+				<% end %>
+				<% if alert %>
+  				<p class="alert alert-danger"><%= alert %></p>
+				p><% end %>
 				<%= yield %>
 			</div>
 			<div id="map_container" class="col-md-7">
