@@ -77,4 +77,10 @@ TermProject::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # devise setting for heroku
+  config.assets.initialize_on_precompile = false
+  config.action_mailer.default_url_options = { :host => 'warm-peak-7080.herokuapp.com' }
+
+  
 end
