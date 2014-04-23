@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @stations = Station.all
+    @stations = Station.take(10)
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
       marker.lat station.lat
       marker.lng station.lon
