@@ -30,10 +30,10 @@ class StationsController < ApplicationController
 
   def search
     ftid = params[:gas_type]
-    location = params[:search]
+    @location = params[:search]
     distance = params[:distance]
 
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(location, distance).limit(10)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).limit(10)
 
     #@stations.each { |station|
       #station.station_fuel_types.each { |sft|
