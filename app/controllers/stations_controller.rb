@@ -29,13 +29,11 @@ class StationsController < ApplicationController
   end
 
   def search
-    params[:fuel_type_id] = 1
-    params[:distance] = 5
-    ftid = params[:fuel_type_id]
-    location = params[:search]
+    ftid = params[:gas_type]
+    @location = params[:search]
     distance = params[:distance]
 
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(location, distance).limit(10)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).limit(10)
 
     #@stations.each { |station|
       #station.station_fuel_types.each { |sft|
@@ -44,7 +42,9 @@ class StationsController < ApplicationController
     #}
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
-      price = '%.2f' % station.station_fuel_types.first.price.price
+      sft = station.station_fuel_types.find_by(fuel_type_id: ftid)
+      #logger.debug sft.price.price
+      price = '%.2f' % sft.price.price
 
       marker.lat station.lat
       marker.lng station.lon
