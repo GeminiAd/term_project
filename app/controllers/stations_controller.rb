@@ -31,6 +31,7 @@ class StationsController < ApplicationController
   def search
     params[:fuel_type_id] = 1
     ftid = params[:fuel_type_id]
+    @location = params[:search]
 
     #@stations = Station.limit(10).includes(station_fuel_types: :price).where('station_fuel_types.fuel_type_id' => 1)
     @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).limit(10)
@@ -49,7 +50,7 @@ class StationsController < ApplicationController
       marker.lng station.lon
       marker.title station.name
       marker.infowindow "<strong>#{station.name}</strong><br>$#{price}"
-      marker.json({ :name => station.name, :address => station.street_address})
+      marker.json({ :name => station.name, :address => station.street_address, :price => price, :id => station.id})
     end
   end
 

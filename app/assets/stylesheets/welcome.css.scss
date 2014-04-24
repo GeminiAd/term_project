@@ -7,6 +7,7 @@ $container_padding: 15px;
 
 body {
 	min-width: 301px;
+  font-size: 12px;
 }
 
 #header {
@@ -51,6 +52,14 @@ body {
 	padding-bottom: 66%;
 }
 
+#map_sidebar {
+  min-width: 100%;
+}
+#map_sidebar td {
+  min-width: 70%;
+  max-width: 70%;
+}
+
 #map_container {
 	padding: $container_padding;
 }
@@ -84,6 +93,6 @@ body {
 }
 
 #search_form {
-	margin: 0px 0px 10px 10px;
+	margin: 0px 0px 0px 0px;
 	padding-left: 0px;
 }
