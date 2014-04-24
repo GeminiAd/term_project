@@ -50,7 +50,7 @@ class StationsController < ApplicationController
       marker.lng station.lon
       marker.title station.name
       marker.infowindow "<strong>#{station.name}</strong><br>$#{price}"
-      marker.json({ :name => station.name, :address => station.street_address})
+      marker.json({ :name => station.name, :address => station.street_address, :price => price, :id => station.id})
     end
   end
 
