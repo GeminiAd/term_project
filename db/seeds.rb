@@ -47,16 +47,22 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              country: "United States", url: "http://www.chevronwithtechron.com/", phone: "(415) 921-8188" },
                            { name: "Chevron San Francisco", company: "Chevron", address: "1100 Junipero Serra Blvd",
                              city: "San Francisco", state: "California", zip: 94132, country: "United States",
-                             url: "http://www.chevronwithtechron.com/", phone: "(415) 584-4565" }
-                           #{ name: "Chevron San Francisco", company: "Chevron", address: "1298 Howard Street",
-                           #  city: "San Francisco", state: "California", zip: 94103, country: "United States",
-                           #  url: "http://www.chevronwithtechron.com/", phone: "(415) 575-0290" }
+                             url: "http://www.chevronwithtechron.com/", phone: "(415) 584-4565" },
+                           { name: "Double A Corporation", company: "Double A Corporation", address: "1101 Juniperro Serra Blvd",
+                             city: "San Francisco", state: "California", zip: 94132, country: "United States",
+                             phone: "(415) 586-2926" },
+                           { name: "T&R 76", company: "76", address: "3898 California St", city: "San Francisco",
+                             state: "California", zip: 94118, country: "United States", url: "http://76.com",
+                             phone: "(415) 752-0646" },
+                           { name: "Chevron Station San Francisco", company: "Chevron", address: "2500 California St",
+                             city: "San Francisco", state: "California", zip: 94115, country: "United States", 
+                             url: "http://www.chevronwithtechron.com/", phone: "(415) 567-1136" }
                           ])
 
-fuel_types = FuelType.create([ { name: "87 Octane", description: "Test" },
-                               { name: "89 Octane", description: "Test" },
-                               { name: "91 Octane", description: "Test" },
-                               { name: "Diesel", description: "Test"    } 
+fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
+                               { name: "Mid", description: "89 Octane" },
+                               { name: "Premium", description: "91 Octane" },
+                               { name: "Diesel", description: "Trucker's favorite"    } 
                              ])
 
 # Note: rows correspond to stations, columns correspond to fuel_types
@@ -75,7 +81,10 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.25, 4.33, 4.41, 0    ],
            [ 4.27, 4.37, 4.47, 0    ],
            [ 4.39, 4.49, 4.59, 4.39 ],
-           [ 4.29, 4.37, 4.45, 0    ] 
+           [ 4.29, 4.37, 4.45, 0    ],
+           [ 4.69, 4.79, 4.89, 4.15 ],
+           [ 4.58, 4.69, 4.79, 0    ],
+           [ 4.34, 4.41, 4.59, 0    ]
          ]
 
 station_fuel_types = Array.new
