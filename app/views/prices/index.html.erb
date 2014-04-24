@@ -3,7 +3,6 @@
 <%= link_to 'New Price', new_price_path %> 
 <table border="1">
   <tr>
-    <th>Id</th>
     <th>Station Fuel Type Id</th>
     <th>Price</th>
     <th>Time</th>
@@ -14,7 +13,6 @@
  
   <% @prices.each do |price| %>
     <tr>
-      <td><%= price.id %></td>
       <td><%= price.station_fuel_type_id %></td>
       <td><%= price.price %></td>
       <td><%= price.time %></td>
