@@ -57,7 +57,4 @@ end
 gem 'rspec'
 gem 'rspec-rails'
 
-gem 'httparty'
-gem 'json'
-
 gem 'devise'

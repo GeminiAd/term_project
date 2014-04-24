@@ -30,6 +30,7 @@ class StationsController < ApplicationController
 
   def search
     params[:fuel_type_id] = 1
+    params[:distance] = 5
     ftid = params[:fuel_type_id]
 
     #@stations = Station.limit(10).includes(station_fuel_types: :price).where('station_fuel_types.fuel_type_id' => 1)
