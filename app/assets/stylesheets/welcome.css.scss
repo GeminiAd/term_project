@@ -47,17 +47,18 @@ body {
 	list-style-type: none;
 }
 
-#map {
-	min-height: 100px;
-	padding-bottom: 66%;
-}
-
 #map_sidebar {
   min-width: 100%;
 }
+
 #map_sidebar td {
   min-width: 70%;
   max-width: 70%;
+}
+
+#map {
+	min-height: 100px;
+	padding-bottom: 66%;
 }
 
 #map_container {
