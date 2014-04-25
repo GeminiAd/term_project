@@ -17,6 +17,11 @@ end
 
 class WelcomeController < ApplicationController
   def index
+    city = request.location.city
+    country = request.location.country_code
+ 
+    params[:user_location] = "#{city}, #{country}"
+
     params[:fuel_type_id] = 1
     ftid = params[:fuel_type_id]
     @location = "San Francisco"

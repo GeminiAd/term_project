@@ -162,6 +162,8 @@ handler.buildMap({ provider: {styles :mapStyle}, internal: {id: 'map'}}, functio
 
 <% end %>
 
+<%= params.inspect  %>
+
 <% content_for :crud do %>
 <%= link_to "Gas Station List<br>".html_safe, controller: "stations" %>
 <%= link_to "Fuel Type List<br>".html_safe, controller: "fuel_types" %>
