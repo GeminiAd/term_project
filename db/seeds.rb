@@ -62,7 +62,24 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              url: "http://shell.com", phone: "(415) 567-6512" },
                            { name: "Chevron", company: "Chevron", address: "1501 Van Ness Ave", city: "San Francisco",
                              state: "California", zip: 94109, country: "United States", url: "http://chevronwithtechron.com",
-                             phone: "(415) 441-3518" }
+                             phone: "(415) 441-3518" },
+                           { name: "Lombard Valero", company: "Valero", address: "2601 Lombard St", city: "San Francisco",
+                             state: "California", zip: 94123, country: "United States", url: "http://valero.com",
+                             phone: "(415) 921-1132" },
+                           { name: "Lombard Union 76", company: "76", address: "2498 Lombard St", city: "San Francisco",
+                             state: "California", zip: 94123, country: "United States", url: "http://76.com",
+                             phone: "(415) 931-4040" },
+                           { name: "Lombard Shell", company: "Shell", address: "1800 Lombard St", city: "San Francisco",
+                             state: "California", zip: 94123, country: "United States", url: "http://shell.com" },
+                           { name: "Chevron ExtraMile", company: "Chevron", address: "1790 Lombard St",
+                             city: "San Francisco", state: "California", zip: 94123, country: "United States",
+                             url: "http://chevronwithtechron.com", phone: "(415) 922-4922" },
+                           { name: "Fisherman's Wharf Union 76", company: "76", address: "490 Bay St", city: "San Francisco",
+                             state: "California", zip: 94133, country: "United States", url: "http://76.com",
+                             phone: "(415) 771-7730" },
+                           { name: "Downtown 76", company: "76", address: "390 1st St", city: "San Francisco",
+                             state: "California", zip: 94105, country: "United States", url: "http://76.com",
+                             phone: "(415) 957-1754" }
                           ])
 
 fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
@@ -92,7 +109,13 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.58, 4.69, 4.79, 0    ],
            [ 4.34, 4.41, 4.59, 0    ],
            [ 4.35, 4.41, 4.49, 0    ],
-           [ 4.35, 4.43, 4.51, 4.19 ]
+           [ 4.35, 4.43, 4.51, 4.19 ],
+           [ 4.59, 4.69, 4.79, 0    ],
+           [ 4.33, 4.49, 4.59, 0    ],
+           [ 4.33, 4.43, 4.49, 4.19 ],
+           [ 4.35, 4.43, 4.49, 4.23 ],
+           [ 4.51, 4.63, 4.73, 0    ],
+           [ 4.51, 4.63, 4.73, 0    ]
          ]
 
 station_fuel_types = Array.new
