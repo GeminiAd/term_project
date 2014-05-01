@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Geographic Gas Prices</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/lumen/bootstrap.min.css">
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
@@ -11,78 +11,75 @@
 </head>
 <body>
 	<div id="main_container" class="container">
-		<div id="header">
+		<div class="navbar navbar-default row">
 			<div class="container">
-				<h1 id="logo"><a href="/">Geographic Gas Prices</a></h1>
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">Geographic Gas Prices</a>
+				</div>
+				<a href="/"><button type="button" class="btn btn-default navbar-btn">Home</button></a>
+				<a href="#"><button type="button" class="btn btn-default navbar-btn">About</button></a>
+				<a href="#"><button type="button" class="btn btn-default navbar-btn">Test</button></a>
+				<% if user_signed_in? %>
+				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-default navbar-btn navbar-right" %>
+				<p class="navbar-text pull-right">Signed in as <strong>
+				<%= link_to current_user.username, edit_user_registration_path, :class => "navbar-link" %>
+				</strong></p>
+				<% else %>
+				<%= link_to "Login", new_user_session_path, :class => "btn btn-default navbar-btn navbar-right" %>
+				<%= link_to "Sign up", new_user_registration_path, :class => "btn btn-default navbar-btn navbar-right" %>
+				<% end %>
 			</div>
 		</div>
 		<div id="content_container" class="row">
 			<div id="content" class="col-md-5">
 				<div class="panel panel-default">
-					<div class="panel-heading"><h4>Menu</h4></div>
+					<div class="panel-heading"><h4>Search for Local Gas</h4>
+						<div id="search_form">
+							<%= form_tag({controller: "/stations", action: "search"}, method: "get") do %>
+							<%= label_tag(:search, "") %>
+							<%= text_field_tag :search, nil, placeholder: 'City or Zip' %>
+							<select name="distance" id="distance">
+								<option value="1">1 mile</option>
+								<option value="2">2 miles</option>
+								<option value="3">3 miles</option>
+								<option value="5">5 miles</option>
+								<option value="10">10 miles</option>
+								<option value="15">15 miles</option>
+								<option value="20">20 miles</option>
+								<option value="25">25 miles</option>
+							</select>
+							<select name="gas_type" id="gas_type">
+								<option value="1">87 Octane</option>
+								<option value="2">89 Octane</option>
+								<option value="3">91 Octane</option>
+								<option value="4">Diesel</option>
+							</select>
+							<%= submit_tag("Search") %>
+							<% end %>
+
+						</div>
+					</div>
 					<div class="panel-body">
-						<a href="/"><button type="button" class="btn btn-default">Home</button></a>
-						<a href="#"><button type="button" class="btn btn-default">About</button></a>
-						<a href="#"><button type="button" class="btn btn-default">Test</button></a>
-						<% if user_signed_in? %>
-						Hello <strong>
-						<%= link_to current_user.email, edit_user_registration_path, :class => "navbar-link" %>
-					</strong>
-					<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "btn btn-default" %>
-					<% else %>
-					<%= link_to "Login", new_user_session_path, :class => "btn btn-default" %>
-					<%= link_to "Sign up", new_user_registration_path, :class => "btn btn-default" %>
-					<% end %>						
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading"><h4>Search for Local Gas</h4>
-					<div id="search_form">
-						<%= form_tag({controller: "/stations", action: "search"}, method: "get") do %>
-						<%= label_tag(:search, "") %>
-						<%= text_field_tag :search, nil, placeholder: 'City or Zip' %>
-						<select name="distance" id="distance">
-							<option value="1">1 mile</option>
-							<option value="2">2 miles</option>
-							<option value="3">3 miles</option>
-							<option value="5">5 miles</option>
-							<option value="10">10 miles</option>
-							<option value="15">15 miles</option>
-							<option value="20">20 miles</option>
-							<option value="25">25 miles</option>
-						</select>
-						<select name="gas_type" id="gas_type">
-							<option value="1">87 Octane</option>
-							<option value="2">89 Octane</option>
-							<option value="3">91 Octane</option>
-							<option value="4">Diesel</option>
-						</select>
-						<%= submit_tag("Search") %>
-						<% end %>
+
+
+						<%= yield :content %>
 
 					</div>
 				</div>
-				<div class="panel-body">
 
-
-					<%= yield :content %>
-
-				</div>
+				<% if notice %>
+				<p class="alert alert-success"><%= notice %></p>
+				<% end %>
+				<% if alert %>
+				<p class="alert alert-danger"><%= alert %></p>
+				p><% end %>
+				<%= yield %>
 			</div>
-
-			<% if notice %>
-			<p class="alert alert-success"><%= notice %></p>
-			<% end %>
-			<% if alert %>
-			<p class="alert alert-danger"><%= alert %></p>
-			p><% end %>
-			<%= yield %>
-		</div>
-		<div id="map_container" class="col-md-7">
-			<%= yield :map %>
+			<div id="map_container" class="col-md-7">
+				<%= yield :map %>
+			</div>
 		</div>
 	</div>
-</div>
-<%= yield :crud %>
+	<%= yield :crud %>
 </body>
 </html>
