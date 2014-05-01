@@ -100,7 +100,13 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              url: "http://chevronwithtechron.com", phone: "(415) 558-9274" },
                            { name: "ARCO", company: "ARCO", address: "1798 Mission St", city: "San Francisco",
                              state: "California", zip: 94103, country: "United States", url: "http://arco.com",
-                             phone: "(415) 437-1947" }
+                             phone: "(415) 437-1947" },
+                           { name: "ARCO", company: "ARCO", address: "1175 Fell St", city: "San Francisco",
+                             state: "California", zip: 94117, country: "United States", url: "http://arco.com",
+                             phone: "(415) 431-3515" },
+                           { name: "Shell", company: "Shell", address: "1070 Oak St", city: "San Francisco",
+                             state: "California", zip: 94117, country: "United States", url: "http://shell.com",
+                             phone: "(415) 864-3231" }
                           ])
 
 fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
@@ -143,7 +149,9 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.35, 4.41, 4.49, 4.19 ],
            [ 4.35, 4.43, 4.51, 4.19 ],
            [ 4.37, 4.45, 4.53, 0    ],
-           [ 4.15, 4.25, 4.35, 0    ]
+           [ 4.15, 4.25, 4.35, 0    ],
+           [ 4.09, 4.19, 4.29, 0    ],
+           [ 4.66, 4.76, 4.86, 0    ]
          ]
 
 station_fuel_types = Array.new
