@@ -19,13 +19,44 @@ class WelcomeController < ApplicationController
   def index
     city = request.location.city
     country = request.location.country_code
- 
+
     params[:user_location] = "#{city}, #{country}"
 
     params[:fuel_type_id] = 1
     ftid = params[:fuel_type_id]
     @location = "San Francisco"
+
+    @price_87 = Hash.new
+    @price_89 = Hash.new
+    @price_91 = Hash.new
+    @price_diesel = Hash.new
+
+    @stations_with_all_prices = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id = 1 OR station_fuel_types.fuel_type_id = 2 OR station_fuel_types.fuel_type_id = 3 OR station_fuel_types.fuel_type_id = 4').near(@location, 25)
+    
+    #@stations.each { |station|
+      #station.station_fuel_types.each { |sft|
+        #logger.debug "Station Fuel Type #{sft.id} present with price $#{sft.price.price}"
+      #}
+    #}
+
+    @stations_with_all_prices.each_with_index do |station, i|
+      if(sft = station.station_fuel_types.find_by(fuel_type_id: '1'))
+        @price_87[station.id] = '%.2f' % sft.price.price
+      end
+      if(sft = station.station_fuel_types.find_by(fuel_type_id: '2'))
+        @price_89[station.id] = '%.2f' % sft.price.price
+      end
+      if(sft = station.station_fuel_types.find_by(fuel_type_id: '3'))
+        @price_91[station.id] = '%.2f' % sft.price.price
+      end
+      if(sft = station.station_fuel_types.find_by(fuel_type_id: '4'))
+        @price_diesel[station.id] = '%.2f' % sft.price.price
+      end
+    end
+
+
     @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(15)
+    @ft = "87 Octane"
 
     @stations.each { |station|
       logger.debug station.street_address
@@ -41,8 +72,22 @@ class WelcomeController < ApplicationController
       marker.lat station.lat
       marker.lng station.lon
       marker.title station.name
-      marker.infowindow "<strong>#{station.name}</strong><br>$#{price}"
-      marker.json({ :name => station.name, :address => station.street_address, :price => price, :id => station.id})
+      marker.infowindow "<strong>#{station.name}</strong><br>#{station.address}" + 
+      "<table id='infowindow_table'>
+      <tr>
+      <th>87 Octane</th>
+      <th>89 Octane</th>
+      <th>91 Octane</th>
+      <th>Diesel</th>
+      </tr>
+      <tr>
+      <td>$#{@price_87[station.id]}</td>
+      <td>$#{@price_89[station.id]}</td>
+      <td>$#{@price_91[station.id]}</td>
+      <td>$#{@price_diesel[station.id]}</td>
+      </tr>
+      </table>"
+      marker.json({ :name => station.name, :address => station.address, :price => price, :id => station.id})
     end
   end
 end

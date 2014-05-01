@@ -10,6 +10,34 @@ body {
   font-size: 12px;
 }
 
+table a, .table a {
+  text-decoration: none;
+}
+
+.navbar {
+  border-width: 0px 1px 1px 1px;
+  border-radius: 0px;
+}
+
+.navbar-brand {
+  margin-right: 10px;
+}
+
+.btn {
+  border: none;
+  font-weight: normal;
+}
+
+.btn-default {
+  border-radius: 1px;
+  background-color: #f8f8f8;
+  padding: 10px 15px 10px 15px;
+}
+
+#infowindow_table th, #infowindow_table td{
+  padding: 0px 10px 0px 0px;
+}
+
 #header {
 	padding: 0px 0px 15px 35px;
 	margin: 5px 0px 0px 0px;
