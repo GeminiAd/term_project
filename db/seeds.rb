@@ -130,7 +130,20 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              phone: "(415) 585-0775" },
                            { name: "ARCO", company: "ARCO", address: "5898 Mission St", city: "San Francisco",
                              state: "California", zip: 94112, country: "United States", url: "http://arco.com",
-                             phone: "(415) 584-2266" }
+                             phone: "(415) 584-2266" },
+                           { name: "Geneva Shell", company: "Shell", address: "2200 Alemany Blvd", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", url: "http://shell.com",
+                             phone: "(415) 586-3295" },
+                           { name: "Chevron ExtraMile", company: "Chevron", address: "5098 Mission St", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", url: "http://chevronwithtechron.com",
+                             phone: "(415) 337-9887" },
+                           { name: "ARCO", company: "ARCO", address: "1200 Geneva Ave", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", url: "http://arco.com",
+                             phone: "(415) 585-6988" },
+                           { name: "Best Auto Care", company: "Best", address: "2099 San Jose Ave", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", phone: "(415) 334-7585" },
+                           { name: "Will's Super Shell", company: "Shell", address: "4298 Mission St", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", url: "http://shell.com" }
                           ])
 
 fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
@@ -184,7 +197,12 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.34, 4.44, 4.54, 4.29 ],
            [ 4.39, 4.49, 4.59, 4.29 ],
            [ 4.33, 4.41, 4.49, 0    ],
-           [ 4.09, 4.19, 4.27, 0    ]
+           [ 4.09, 4.19, 4.27, 0    ],
+           [ 4.33, 4.43, 4.53, 4.19 ],
+           [ 4.33, 4.43, 4.53, 4.19 ],
+           [ 4.09, 4.19, 4.29, 0    ],
+           [ 4.25, 4.35, 4.45, 0    ],
+           [ 4.28, 4.39, 4.49, 0    ]
          ]
 
 station_fuel_types = Array.new
