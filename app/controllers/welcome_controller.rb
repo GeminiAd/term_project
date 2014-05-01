@@ -27,11 +27,12 @@ class WelcomeController < ApplicationController
     @location = "San Francisco"
     @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(15)
 
-    #@stations.each { |station|
+    @stations.each { |station|
+      logger.debug station.street_address
       #station.station_fuel_types.each { |sft|
         #logger.debug "Station Fuel Type #{sft.id} present with price $#{sft.price.price}"
       #}
-    #}
+    }
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
       price = '%.2f' % station.station_fuel_types.first.price.price

@@ -106,7 +106,31 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              phone: "(415) 431-3515" },
                            { name: "Shell", company: "Shell", address: "1070 Oak St", city: "San Francisco",
                              state: "California", zip: 94117, country: "United States", url: "http://shell.com",
-                             phone: "(415) 864-3231" }
+                             phone: "(415) 864-3231" },
+                           { name: "Performance Shell", company: "Shell", address: "388 Potrero Ave", city: "San Francisco",
+                             state: "California", zip: 94103, country: "United States", url: "http://shell.com",
+                             phone: "(415) 626-4238" },
+                           { name: "Evans Chevron", company: "Chevron", address: "3750 3rd St", city: "San Francisco",
+                             state: "California", zip: 94124, country: "United States", 
+                             url: "http://chevronwithtechron.com", phone: "(415) 285-5839" },
+                           { name: "Evans 76", company: "76", address: "3800 3rd St", city: "San Francisco",
+                             state: "California", zip: 94124, country: "United States", url: "http://76.com" },
+                           { name: "ARCO", company: "ARCO", address: "151 Southgate Ave", city: "San Francisco",
+                             state: "California", zip: 94015, country: "United States", url: "http://arco.com",
+                             phone: "(650) 755-4878" },
+                           { name: "Chevron", company: "Chevron", address: "892 John Daly Blvd", city: "Daly City",
+                             state: "California", zip: 94015, country: "United States", url: "http://chevronwithtechron.com" },
+                           { name: "ARCO", company: "ARCO", address: "295 Washington St", city: "Daly City", state: "California",
+                             zip: 94015, country: "United States", url: "http://arco.com", phone: "(650) 756-4040" },
+                           { name: "Sullivan Valero", company: "Valero", address: "1690 Sullivan Ave", city: "Daly City",
+                             state: "California", zip: 94015, country: "United States", url: "http://valero.com",
+                             phone: "(650) 992-4013" },
+                           { name: "Chevron", company: "Chevron", address: "2998 San Jose Ave", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", url: "http://chevronwithtechron.com",
+                             phone: "(415) 585-0775" },
+                           { name: "ARCO", company: "ARCO", address: "5898 Mission St", city: "San Francisco",
+                             state: "California", zip: 94112, country: "United States", url: "http://arco.com",
+                             phone: "(415) 584-2266" }
                           ])
 
 fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
@@ -151,7 +175,16 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.37, 4.45, 4.53, 0    ],
            [ 4.15, 4.25, 4.35, 0    ],
            [ 4.09, 4.19, 4.29, 0    ],
-           [ 4.66, 4.76, 4.86, 0    ]
+           [ 4.66, 4.76, 4.86, 0    ],
+           [ 4.33, 4.43, 4.53, 0    ],
+           [ 4.23, 4.33, 4.43, 4.09 ],
+           [ 4.23, 4.33, 4.43, 0    ],
+           [ 4.19, 4.29, 4.39, 0    ],
+           [ 4.35, 4.43, 4.51, 0    ],
+           [ 4.34, 4.44, 4.54, 4.29 ],
+           [ 4.39, 4.49, 4.59, 4.29 ],
+           [ 4.33, 4.41, 4.49, 0    ],
+           [ 4.09, 4.19, 4.27, 0    ]
          ]
 
 station_fuel_types = Array.new
