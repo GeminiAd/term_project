@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
     params[:fuel_type_id] = 1
     ftid = params[:fuel_type_id]
     @location = "San Francisco"
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(15)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(30)
 
     @stations.each { |station|
       logger.debug station.street_address
