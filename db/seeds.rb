@@ -79,7 +79,28 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              phone: "(415) 771-7730" },
                            { name: "Downtown 76", company: "76", address: "390 1st St", city: "San Francisco",
                              state: "California", zip: 94105, country: "United States", url: "http://76.com",
-                             phone: "(415) 957-1754" }
+                             phone: "(415) 957-1754" },
+                           { name: "Bryant Shell", company: "Shell", address: "598 Bryant St", city: "San Francisco",
+                             state: "California", zip: 94107, country: "United States", url: "http://shell.com",
+                             phone: "(415) 495-5833" },
+                           { name: "Moscone Center Shell", company: "Shell", address: "300 5th St", city: "San Francisco",
+                             state: "California", zip: 94107, country: "United States", url: "http://shell.com",
+                             phone: "(415) 974-1088" },
+                           { name: "Chevron", company: "Chevron", address: "1000 Harrison St", city: "San Francisco",
+                             state: "California", zip: 94103, country: "United States", url: "http://chevron.com",
+                             phone: "(415) 863-3001" },
+                           { name: "Harrison Shell", company: "Shell", address: "1201 Harrison St", city: "San Francisco",
+                             state: "California", zip: 94103, country: "United States", url: "http://shell.us",
+                             phone: "(415) 621-5542" },
+                           { name: "Chevron San Francisco", company: "Chevron", address: "1298 Howard St",
+                             city: "San Francisco", state: "California", zip: 94103, country: "United States",
+                             url: "http://chevronwithtechron.com", phone: "(415) 575-0290" },
+                           { name: "Chevron San Francisco", company: "Chevron", address: "1601 Mission St",
+                             city: "San Francisco", state: "California", zip: 94103, country: "United States",
+                             url: "http://chevronwithtechron.com", phone: "(415) 558-9274" },
+                           { name: "ARCO", company: "ARCO", address: "1798 Mission St", city: "San Francisco",
+                             state: "California", zip: 94103, country: "United States", url: "http://arco.com",
+                             phone: "(415) 437-1947" }
                           ])
 
 fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
@@ -115,7 +136,14 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.33, 4.43, 4.49, 4.19 ],
            [ 4.35, 4.43, 4.49, 4.23 ],
            [ 4.51, 4.63, 4.73, 0    ],
-           [ 4.51, 4.63, 4.73, 0    ]
+           [ 4.51, 4.63, 4.73, 0    ],
+           [ 4.49, 4.59, 4.69, 4.19 ],
+           [ 4.59, 4.69, 4.79, 0    ],
+           [ 4.35, 4.43, 4.49, 4.19 ],
+           [ 4.35, 4.41, 4.49, 4.19 ],
+           [ 4.35, 4.43, 4.51, 4.19 ],
+           [ 4.37, 4.45, 4.53, 0    ],
+           [ 4.15, 4.25, 4.35, 0    ]
          ]
 
 station_fuel_types = Array.new
