@@ -59,7 +59,10 @@ stations = Station.create([{ name: "Claremont Service Station", company: "Valero
                              url: "http://www.chevronwithtechron.com/", phone: "(415) 567-1136" },
                            { name: "Shell Gas Station", company: "Shell", address: "2501 California St",
                              city: "San Francisco", state: "California", zip: 94115, country: "United States",
-                             url: "http://shell.com", phone: "(415) 567-6512" }
+                             url: "http://shell.com", phone: "(415) 567-6512" },
+                           { name: "Chevron", company: "Chevron", address: "1501 Van Ness Ave", city: "San Francisco",
+                             state: "California", zip: 94109, country: "United States", url: "http://chevronwithtechron.com",
+                             phone: "(415) 441-3518" }
                           ])
 
 fuel_types = FuelType.create([ { name: "Regular", description: "87 Octane" },
@@ -88,7 +91,8 @@ prices = [ [ 4.31, 4.45, 4.55, 0    ],
            [ 4.69, 4.79, 4.89, 4.15 ],
            [ 4.58, 4.69, 4.79, 0    ],
            [ 4.34, 4.41, 4.59, 0    ],
-           [ 4.35, 4.41, 4.49, 0    ]
+           [ 4.35, 4.41, 4.49, 0    ],
+           [ 4.35, 4.43, 4.51, 4.19 ]
          ]
 
 station_fuel_types = Array.new
