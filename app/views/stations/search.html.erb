@@ -1,13 +1,19 @@
 <% content_for :content do %>
 <h5>
-    <%= "Showing stations located near: #{@location} "%>
+    Showing stations located near <strong><%= "#{@location}"%></strong> within <%= "#{@miles}" %> miles
 </h5>
+<% if (!@stations.blank?) %>
 <table id="map_sidebar" style="width=100%;">
     <tr>
         <th>Station Name</th>
         <th>Gas Price</th>
     </tr>
 </table>
+<% else %>
+<p>
+    None found.
+</p>
+<% end %>
 <% end %>
 
 <% content_for :map do %>
