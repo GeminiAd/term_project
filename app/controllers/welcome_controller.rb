@@ -61,7 +61,6 @@ class WelcomeController < ApplicationController
         prices[sft.fuel_type_id-1] = '%.2f' % sft.price.price
       }
 
-      logger.debug prices.to_s
       regular = prices[0]
       mid = prices[1]
       premium = prices[2]
