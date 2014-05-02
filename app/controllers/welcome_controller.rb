@@ -56,10 +56,10 @@ class WelcomeController < ApplicationController
 
       prices = station.prices
 
-      regular = prices[0]
-      mid = prices[1]
-      premium = prices[2]
-      diesel = prices[3]
+      @regular = prices[0]
+      @mid = prices[1]
+      @premium = prices[2]
+      @diesel = prices[3]
 
       marker.lat station.lat
       marker.lng station.lon
@@ -73,10 +73,10 @@ class WelcomeController < ApplicationController
       <th>Diesel</th>
       </tr>
       <tr>
-      <td>$#{regular}</td>
-      <td>$#{mid}</td>
-      <td>$#{premium}</td>
-      <td>$#{diesel}</td>
+      <td>$#{@regular}</td>
+      <td>$#{@mid}</td>
+      <td>$#{@premium}</td>
+      <td>$#{@diesel}</td>
       </tr>
       </table>"
       marker.json({ :name => station.name, :address => station.address, :price => price, :id => station.id})
