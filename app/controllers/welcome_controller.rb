@@ -48,7 +48,7 @@ class WelcomeController < ApplicationController
     #end
 
 
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(5)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(15)
     @ft = "87 Octane"
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
