@@ -55,7 +55,7 @@ class WelcomeController < ApplicationController
     end
 
 
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(15)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(20)
     @ft = "87 Octane"
 
     @stations.each { |station|
