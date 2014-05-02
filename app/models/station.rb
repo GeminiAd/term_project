@@ -10,6 +10,17 @@ class Station < ActiveRecord::Base
   geocoded_by :street_address, :latitude  => :lat, :longitude => :lon
   after_validation :geocode
 
+  def prices
+    prices = Array.new(4)
+
+    station_fuel_types.each { |sft|
+      #logger.debug "Station Fuel Type #{sft.id} present with price $#{sft.price.price}"
+      prices[sft.fuel_type_id-1] = '%.2f' % sft.price.price
+    }
+
+    return prices
+  end
+
   def street_address
     [address, city, state, country].compact.join(', ')
   end
