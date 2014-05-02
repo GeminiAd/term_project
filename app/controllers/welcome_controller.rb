@@ -26,48 +26,46 @@ class WelcomeController < ApplicationController
     ftid = params[:fuel_type_id]
     @location = "San Francisco"
 
-    @price_87 = Hash.new
-    @price_89 = Hash.new
-    @price_91 = Hash.new
-    @price_diesel = Hash.new
-
-    @stations_with_all_prices = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id = 1 OR station_fuel_types.fuel_type_id = 2 OR station_fuel_types.fuel_type_id = 3 OR station_fuel_types.fuel_type_id = 4').near(@location, 25)
-    
-    #@stations.each { |station|
-      #station.station_fuel_types.each { |sft|
-        #logger.debug "Station Fuel Type #{sft.id} present with price $#{sft.price.price}"
-      #}
-    #}
-
-    @stations_with_all_prices.each_with_index do |station, i|
-      if(sft = station.station_fuel_types.find_by(fuel_type_id: '1'))
-        @price_87[station.id] = '%.2f' % sft.price.price
-      end
-      if(sft = station.station_fuel_types.find_by(fuel_type_id: '2'))
-        @price_89[station.id] = '%.2f' % sft.price.price
-      end
-      if(sft = station.station_fuel_types.find_by(fuel_type_id: '3'))
-        @price_91[station.id] = '%.2f' % sft.price.price
-      end
-      if(sft = station.station_fuel_types.find_by(fuel_type_id: '4'))
-        @price_diesel[station.id] = '%.2f' % sft.price.price
-      end
-    end
+    #@price_87 = Hash.new
+    #@price_89 = Hash.new
+    #@price_91 = Hash.new
+    #@price_diesel = Hash.new
+    #@stations_with_all_prices = Hash.new
+    #@stations_with_all_prices = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id = 1 OR station_fuel_types.fuel_type_id = 2 OR station_fuel_types.fuel_type_id = 3 OR station_fuel_types.fuel_type_id = 4').near(@location, 25)
+    #@stations_with_all_prices.each_with_index do |station, i|
+      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '1'))
+        #@price_87[station.id] = '%.2f' % sft.price.price
+      #end
+      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '2'))
+        #@price_89[station.id] = '%.2f' % sft.price.price
+      #end
+      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '3'))
+        #@price_91[station.id] = '%.2f' % sft.price.price
+      #end
+      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '4'))
+        #@price_diesel[station.id] = '%.2f' % sft.price.price
+      #end
+    #end
 
 
     @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(20)
     @ft = "87 Octane"
 
-    @stations.each { |station|
-      logger.debug station.street_address
-      #station.station_fuel_types.each { |sft|
-        #logger.debug "Station Fuel Type #{sft.id} present with price $#{sft.price.price}"
-      #}
-    }
-
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
+      prices = Array.new(4)
       price = '%.2f' % station.station_fuel_types.first.price.price
       #logger.debug(price)
+
+      station.station_fuel_types.each { |sft|
+        #logger.debug "Station Fuel Type #{sft.id} present with price $#{sft.price.price}"
+        prices[sft.fuel_type_id-1] = '%.2f' % sft.price.price
+      }
+
+      logger.debug prices.to_s
+      regular = prices[0]
+      mid = prices[1]
+      premium = prices[2]
+      diesel = prices[3]
 
       marker.lat station.lat
       marker.lng station.lon
@@ -81,10 +79,10 @@ class WelcomeController < ApplicationController
       <th>Diesel</th>
       </tr>
       <tr>
-      <td>$#{@price_87[station.id]}</td>
-      <td>$#{@price_89[station.id]}</td>
-      <td>$#{@price_91[station.id]}</td>
-      <td>$#{@price_diesel[station.id]}</td>
+      <td>$#{regular}</td>
+      <td>$#{mid}</td>
+      <td>$#{premium}</td>
+      <td>$#{diesel}</td>
       </tr>
       </table>"
       marker.json({ :name => station.name, :address => station.address, :price => price, :id => station.id})
