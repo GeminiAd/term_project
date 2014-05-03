@@ -82,9 +82,9 @@ class StationsController < ApplicationController
       marker.infowindow "<strong>#{station.name}</strong><br>#{station.address}" +
       "<table id='infowindow_table'>
       <tr>
-      <th>87 Octane</th>
-      <th>89 Octane</th>
-      <th>91 Octane</th>
+      <th>Regular</th>
+      <th>Mid-Grade</th>
+      <th>Premium</th>
       <th>Diesel</th>
       </tr>
       <tr>
