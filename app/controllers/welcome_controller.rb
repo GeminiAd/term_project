@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
     params[:user_location] = "#{city}, #{country}"
 
     params[:fuel_type_id] = 1
-    params[:num_results] = 15
+    params[:max_results] = 15
     ftid = params[:fuel_type_id]
     @location = "San Francisco"
 
@@ -49,7 +49,7 @@ class WelcomeController < ApplicationController
     #end
 
 
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(params[:num_results])
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(params[:max_results])
     @ft = "87 Octane"
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
