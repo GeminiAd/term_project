@@ -22,15 +22,14 @@ class WelcomeController < ApplicationController
 
     params[:user_location] = "#{city}, #{country}"
    
-    params[:fuel_type_id] = 1
     max_results = 10
     distance = 5
-    ftid = params[:fuel_type_id]
+    ftid = 1
     @location = "San Francisco"
 
-    @city = City.find_by name: @location
-
     @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).first(max_results)
+    @fuel_type = FuelType.find(ftid)
+    logger.debug @fuel_type.name
     @ft = "87 Octane"
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
