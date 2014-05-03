@@ -1,7 +1,8 @@
 <% if (@stations != nil) %>
 <% content_for :content do %>
 <h5>
-    Showing <%= "#{@stations.length}" %> stations located near <strong><%= "#{@location}"%></strong>, sorted by distance
+    Showing <%= "#{@stations.length}" %> stations located near <strong><%= "#{@location}"%></strong><br>
+    with fuel type <strong><%= "#{@fuel_type.name}"  %></strong>, sorted by distance
 </h5>
 <table id="map_sidebar" style="width=100%;">
     <tr>
