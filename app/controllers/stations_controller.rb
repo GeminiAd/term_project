@@ -60,6 +60,9 @@ class StationsController < ApplicationController
     #end
 
     @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).limit(max_results)
+    @stations.each { |station|
+      
+    }
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
       sft = station.station_fuel_types.find_by(fuel_type_id: ftid)

@@ -271,3 +271,6 @@ stations.each_index { |i|
     end
   }
 }
+
+cities = City.create([ { name: "San Francisco", state: "California", country: "United States", lat: 37.7749295, lon: -122.4194155 }
+                     ])
