@@ -1,6 +1,7 @@
 <% content_for :content do %>
 <h5>
-    Showing <%= "#{@stations.length}" %> stations located within <%= "#{@miles}" %> miles of <strong><%= "#{@location}"%></strong><br>
+    Showing <%= "#{@stations.length}" %> stations within <strong><%= "#{@miles}" %></strong> miles of 
+    <strong><%= "#{@location}"%></strong><br>
     with fuel type <strong><%= @fuel_type.name  %></strong>, sorted by distance
 </h5>
 <% if (!@stations.blank?) %>
