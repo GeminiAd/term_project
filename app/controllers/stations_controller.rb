@@ -29,10 +29,15 @@ class StationsController < ApplicationController
   end
 
   def search
+    if params[:num_results].nil?
+      params[:num_results] = 15
+    end
+
     ftid = params[:gas_type]
     @location = params[:search]
     distance = params[:distance]
     @miles = distance
+    num_results = params[:num_results]
 
     if (@location == "")
       @location = "San Francisco"
@@ -58,7 +63,7 @@ class StationsController < ApplicationController
       #end
     #end
 
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).limit(15)
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).limit(num_results)
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
       sft = station.station_fuel_types.find_by(fuel_type_id: ftid)
