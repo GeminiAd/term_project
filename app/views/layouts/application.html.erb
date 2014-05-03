@@ -55,6 +55,11 @@
 								<option value="3">Premium</option>
 								<option value="4">Diesel</option>
 							</select>
+                            <select name="max_results" id="max_results">
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                            </select>
 							<%= submit_tag("Search") %>
 							<% end %>
 
@@ -73,7 +78,7 @@
 				<% end %>
 				<% if alert %>
 				<p class="alert alert-danger"><%= alert %></p>
-				p><% end %>
+				<% end %>
 				<%= yield %>
 			</div>
 			<div id="map_container" class="col-md-7">
