@@ -29,10 +29,6 @@ class StationsController < ApplicationController
   end
 
   def search
-    if params[:max_results].nil?
-      params[:max_results] = 15
-    end
-
     ftid = params[:gas_type]
     @location = params[:search]
     distance = params[:distance]
@@ -102,18 +98,6 @@ class StationsController < ApplicationController
     @station = Station.find(params[:id])
 
     @hash = Gmaps4rails.build_markers(@station) do |station, marker|
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '1'))
-        #@price_87 = '%.2f' % sft.price.price
-      #end
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '2'))
-        #@price_89 = '%.2f' % sft.price.price
-      #end
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '3'))
-        #@price_91 = '%.2f' % sft.price.price
-      #end
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '4'))
-        #@price_diesel = '%.2f' % sft.price.price
-      #end
       prices = station.prices
       @regular = prices[0]
       @mid = prices[1]
