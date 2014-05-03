@@ -1,6 +1,6 @@
 <% content_for :content do %>
 <h5>
-    Showing stations located near <strong><%= "#{@location}"%></strong> within <%= "#{@miles}" %> miles
+    Showing <%= "#{@stations.length}" %> stations located near <strong><%= "#{@location}"%></strong> within <%= "#{@miles}" %> miles
 </h5>
 <% if (!@stations.blank?) %>
 <table id="map_sidebar" style="width=100%;">
