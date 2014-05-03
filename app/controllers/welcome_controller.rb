@@ -21,35 +21,16 @@ class WelcomeController < ApplicationController
     country = request.location.country_code
 
     params[:user_location] = "#{city}, #{country}"
-
+   
     params[:fuel_type_id] = 1
-    params[:max_results] = 15
+    max_results = 10
+    distance = 5
     ftid = params[:fuel_type_id]
     @location = "San Francisco"
 
-    #@price_87 = Hash.new
-    #@price_89 = Hash.new
-    #@price_91 = Hash.new
-    #@price_diesel = Hash.new
-    #@stations_with_all_prices = Hash.new
-    #@stations_with_all_prices = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id = 1 OR station_fuel_types.fuel_type_id = 2 OR station_fuel_types.fuel_type_id = 3 OR station_fuel_types.fuel_type_id = 4').near(@location, 25)
-    #@stations_with_all_prices.each_with_index do |station, i|
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '1'))
-        #@price_87[station.id] = '%.2f' % sft.price.price
-      #end
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '2'))
-        #@price_89[station.id] = '%.2f' % sft.price.price
-      #end
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '3'))
-        #@price_91[station.id] = '%.2f' % sft.price.price
-      #end
-      #if(sft = station.station_fuel_types.find_by(fuel_type_id: '4'))
-        #@price_diesel[station.id] = '%.2f' % sft.price.price
-      #end
-    #end
+    @city = City.find_by name: @location
 
-
-    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).last(params[:max_results])
+    @stations = Station.joins(:station_fuel_types).where('station_fuel_types.fuel_type_id' => ftid).near(@location, distance).first(max_results)
     @ft = "87 Octane"
 
     @hash = Gmaps4rails.build_markers(@stations) do |station, marker|
