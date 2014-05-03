@@ -1,7 +1,7 @@
 <% if (@stations != nil) %>
 <% content_for :content do %>
 <h5>
-    Showing stations located near: <strong><%= "#{@location}"%></strong>
+    Showing <%= "#{@stations.length}" %> stations located near: <strong><%= "#{@location}"%></strong>
 </h5>
 <table id="map_sidebar" style="width=100%;">
     <tr>
