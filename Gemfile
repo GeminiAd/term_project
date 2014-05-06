@@ -55,3 +55,5 @@ gem 'rspec'
 gem 'rspec-rails'
 
 gem 'devise'
+
+gem 'turbolinks'
